@@ -6,7 +6,7 @@
 
 Built for **Devengers PromptWars 2026** · Powered by **Google Gemini**.
 
-🔗 **Live Demo:** <!-- paste your Vercel URL here -->
+🔗 **Live Demo:** [https://smart-bharat-virid.vercel.app/](https://smart-bharat-virid.vercel.app/)
 
 ---
 
