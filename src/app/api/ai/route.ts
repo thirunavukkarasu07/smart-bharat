@@ -1,6 +1,7 @@
 // src/app/api/ai/route.ts
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { CIVIC_CHAT_PROMPT, SCHEME_FINDER_PROMPT, ISSUE_TRIAGE_PROMPT } from "@/lib/prompts";
+import { isValidMode } from "@/lib/utils";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
 
@@ -12,9 +13,22 @@ const SYSTEM: Record<string, string> = {
 
 export async function POST(req: Request) {
   try {
-    const { mode, input } = await req.json();
+    const body = await req.json();
+    const mode = typeof body?.mode === "string" ? body.mode : "";
+    const input = typeof body?.input === "string" ? body.input.trim() : "";
+
+    // Validate the request before spending an API call.
+    if (!isValidMode(mode)) {
+      return Response.json({ error: "Invalid mode" }, { status: 400 });
+    }
+    if (!input) {
+      return Response.json({ error: "Input is required" }, { status: 400 });
+    }
+    if (input.length > 4000) {
+      return Response.json({ error: "Input too long" }, { status: 400 });
+    }
+
     const system = SYSTEM[mode];
-    if (!system) return Response.json({ error: "bad mode" }, { status: 400 });
 
     const model = genAI.getGenerativeModel({
       model: "gemini-2.5-flash",

@@ -275,6 +275,7 @@ export default function ChatPage() {
         >
           <input
             type="text"
+            aria-label="Type your civic question in Hindi, Tamil, or English"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             disabled={isLoading}

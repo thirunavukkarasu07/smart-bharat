@@ -226,6 +226,7 @@ export default function ReportPage() {
           <form onSubmit={handleSubmit} className="space-y-4">
             <textarea
               rows={4}
+              aria-label="Describe the civic issue you want to report"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               disabled={isLoading}

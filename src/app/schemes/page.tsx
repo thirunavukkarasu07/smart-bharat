@@ -156,6 +156,7 @@ export default function SchemesPage() {
           <form onSubmit={handleSubmit} className="space-y-4">
             <textarea
               rows={4}
+              aria-label="Describe your profile and needs to find matching government schemes"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               disabled={isLoading}
