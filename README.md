@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🇮🇳 Smart Bharat — AI-Powered Civic Companion
 
-## Getting Started
+> Government services, made simple — in your language.
 
-First, run the development server:
+**Smart Bharat** is a GenAI-powered civic platform that helps every Indian citizen access government services, find schemes they qualify for, and report public issues — through one intelligent AI companion that speaks **Hindi, Tamil, and English**.
+
+Built for **Devengers PromptWars 2026** · Powered by **Google Gemini**.
+
+🔗 **Live Demo:** <!-- paste your Vercel URL here -->
+
+---
+
+## ✨ Features
+
+### 🗣️ Civic AI Chat
+Ask anything about government services — ration cards, PAN, applications, complaints — in **Hindi, Tamil, or English**, and get a simple, structured answer (what it is → who's eligible → documents needed → where to apply). Every answer includes a verify-on-official-portal note for responsible, transparent AI.
+
+### 📋 Scheme & Document Finder
+Describe your situation (age, occupation, income, state) and instantly get **personalized, real government schemes** you qualify for — with eligibility reasons, benefits, an exact document checklist, and the official application portal.
+
+### 📢 Report a Civic Issue (AI Triage)
+Describe a public problem (pothole, water leak, streetlight) and the AI **auto-categorizes it, assigns the responsible department, sets a priority, and issues a tracking ID** (e.g. `SB-2026-9491`). Complaints are saved so citizens can track their history.
+
+---
+
+## 🎯 How it maps to the challenge
+
+| Challenge requirement | How Smart Bharat delivers |
+|---|---|
+| Simplify complex govt information | AI rewrites bureaucratic info into plain, step-by-step guidance |
+| Answer citizen queries | Conversational Civic AI Chat |
+| Recommend relevant public services | Scheme & Document Finder |
+| Assist with document requirements | Per-scheme document checklists |
+| Track complaints | Issue triage + tracking IDs + history |
+| Multilingual support | Native Hindi, Tamil & English |
+| Transparency & digital inclusion | Verify-source disclaimers + language accessibility |
+
+---
+
+## 🛠️ Tech Stack
+
+- **Next.js (App Router) + TypeScript**
+- **Tailwind CSS**
+- **Google Gemini API** (`gemini-2.5-flash`)
+- **Vercel** (deployment)
+
+---
+
+## 🚀 Run locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/<your-username>/smart-bharat.git
+cd smart-bharat
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Create a `.env.local` file:
+```
+GEMINI_API_KEY=your_google_ai_studio_key
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Then:
+```bash
+npm run dev
+```
+Open http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🧠 Architecture
 
-To learn more about Next.js, take a look at the following resources:
+A single API route (`/api/ai`) powers all three features via a `mode` parameter (`chat` | `scheme` | `issue`), each backed by a purpose-built Gemini system prompt in `src/lib/prompts.ts`. The API key stays server-side and is never exposed to the client.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*Built with ❤️ for a more accessible, transparent, and digitally inclusive Bharat.*
